@@ -11,3 +11,7 @@ color: #D4AF37;
 border-left: 4px solid #8B0000;
 font-style: italic;
 }
+body {
+  background-color: #f0f8ff; /* светло-голубой фон */
+  color: #333;               /* тёмный текст */
+}
