@@ -1,4 +1,147 @@
 <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>С Новым Годом!</title>
+  <style>
+    /* ===== НОВОГОДНИЙ СТИЛЬ ===== */
+    body {
+      background: linear-gradient(135deg, #0d3b0d, #1a5c1a);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .snowflakes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .greeting {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 28px;
+      text-shadow: 0 0 10px rgba(255,255,255,0.7);
+    }
+
+    h1, h2 {
+      color: #ffd700;
+      text-align: center;
+    }
+
+    a {
+      color: #ff6b6b;
+      text-decoration: underline;
+    }
+
+    .lights {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .light {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      animation: blink 1.5s infinite;
+    }
+
+    .light:nth-child(1) { background: red; animation-delay: 0s; }
+    .light:nth-child(2) { background: yellow; animation-delay: 0.2s; }
+    .light:nth-child(3) { background: green; animation-delay: 0.4s; }
+    .light:nth-child(4) { background: blue; animation-delay: 0.6s; }
+    .light:nth-child(5) { background: purple; animation-delay: 0.8s; }
+
+    @keyframes blink {
+      0%, 45% { opacity: 1; }
+      50%, 100% { opacity: 0.2; }
+    }
+
+    /* ===== АНИМАЦИЯ СНЕЖИНОК ===== */
+    @keyframes fall {
+      to {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -20px;
+      color: #fff;
+      font-size: 24px;
+      user-select: none;
+      animation: fall 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .snowflake:nth-child(2n) { animation-duration: 10s; }
+    .snowflake:nth-child(3n) { animation-duration: 12s; font-size: 18px; }
+    .snowflake:nth-child(5n) { animation-duration: 7s; font-size: 30px; }
+  </style>
+</head>
+<body>
+
+  <!-- Анимированные снежинки -->
+  <div class="snowflakes" id="snowflakes"></div>
+
+  <!-- Поздравление -->
+  <div class="greeting">
+    ❄️✨ С Рождеством и Новым 2026 годом! ✨❄️
+  </div>
+
+  <!-- Мигающие огоньки -->
+  <div class="lights">
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+    <div class="light"></div>
+  </div>
+
+  <!-- Основной контент -->
+  <h1>Как устроены доменные имена</h1>
+  <p>Доменное имя моего сайта состоит из нескольких уровней: верхний уровень</p>
+
+  <h2>19 декабря 2025</h2>
+  <p>Поздравляю с наступающим Рождеством 2026! <a href="#">здесь</a>.</p>
+  <p>Путешествие в тысячу миль начинается с одного шага (Лао Цзы)</p>
+
+  <h2>6 декабря, 2025</h2>
+  <h2>15 октября, 2025</h2>
+  <p>Я сделала Новогодние кроссворды для сайта</p>
+
+  <h2>1 сентября, 2025</h2>
+  <p>Путешествие в тысячу миль начинается с одного шага (Лао Цзы)</p>
+  <p>Оставляю в прошлом скучную неинтересную локальную файловую систему ради Всемирной паутины.</p>
+
+  <!-- Скрипт для генерации снежинок -->
+  <script>
+    const snowflakesContainer = document.getElementById('snowflakes');
+    const flakes = ['❄', '❅', '❆'];
+    for (let i = 0; i < 50; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.innerHTML = flakes[Math.floor(Math.random() * flakes.length)];
+      snowflake.style.left = Math.random() * 100 + 'vw';
+      snowflake.style.animationDuration = (6 + Math.random() * 6) + 's';
+      snowflake.style.opacity = 0.3 + Math.random() * 0.7;
+      snowflake.className = 'snowflake';
+      snowflakesContainer.appendChild(snowflake);
+    }
+  </script>
+</body>
+</html>
 <html lang-"ru">
 <head>
   <title><Мой блог</title>
