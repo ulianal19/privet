@@ -1,5 +1,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Pudelinka&display=swap" rel="stylesheet">
 <style>
+body, .blob-code, .file-data {
+    font-size: 18px !important; /* Замените 18px на 20px */
+}
   body { font-family: 'Pudelinka', sans-serif; }
 </style>
 body{
