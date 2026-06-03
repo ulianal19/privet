@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Летний Сайт ☀️</title>
-    <!-- Подключаем легкий и современный шрифт -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Пастельное Лето 🌸</title>
+    <!-- Подключаем округлый, дружелюбный шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* 🌴 Летняя цветовая палитра 🌴 */
+        /* 🎨 Пастельная летняя палитра */
         :root {
-            --sky: #4FC3F7;
-            --ocean: #0288D1;
-            --sun: #FFCA28;
-            --coral: #FF7043;
-            --sand: #FFF8E1;
-            --text-dark: #37474F;
-            --glass-bg: rgba(255, 255, 255, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.8);
+            --pastel-pink: #FFD1DC;
+            --pastel-peach: #FFDAC1;
+            --pastel-yellow: #FDFD96;
+            --pastel-mint: #B4F8C8;
+            --pastel-blue: #AEC6CF;
+            --pastel-lavender: #E0BBE4;
+            --text-soft: #5D5D5D;
+            --white-glass: rgba(255, 255, 255, 0.75);
         }
 
         * {
@@ -27,61 +27,83 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            color: var(--text-dark);
-            /* Летний градиентный фон */
-            background: linear-gradient(135deg, #FFFDE7 0%, #E0F7FA 50%, #B2EBF2 100%);
+            font-family: 'Quicksand', sans-serif;
+            color: var(--text-soft);
+            /* Мягкий пастельный градиент фона */
+            background: linear-gradient(135deg, #FFF5F7 0%, #F0F9FF 50%, #FDFCF0 100%);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
             overflow-x: hidden;
             position: relative;
         }
 
-        /* Декоративные размытые круги на фоне (эффект боке/солнца) */
-        .bg-decoration {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            animation: float 8s ease-in-out infinite;
-        }
-        .sun-orb {
-            width: 300px;
-            height: 300px;
-            background: var(--sun);
-            top: -50px;
-            right: -50px;
-            opacity: 0.6;
-        }
-        .ocean-orb {
-            width: 400px;
-            height: 400px;
-            background: var(--sky);
-            bottom: -100px;
-            left: -100px;
-            opacity: 0.5;
-            animation-delay: 2s;
-        }
-
-        /* Анимация плавного парения */
+        /* --- Анимации для рисунков --- */
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes drift {
+            0% { transform: translateX(-10px); }
+            50% { transform: translateX(10px); }
+            100% { transform: translateX(-10px); }
         }
 
-        /* Шапка сайта */
+        /* --- Декоративные фоновые элементы (SVG) --- */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .sun-svg {
+            top: 5%;
+            right: 5%;
+            width: 120px;
+            animation: spin-slow 20s linear infinite;
+            opacity: 0.8;
+        }
+        .cloud-1 {
+            top: 15%;
+            left: 5%;
+            width: 150px;
+            animation: drift 6s ease-in-out infinite;
+        }
+        .cloud-2 {
+            top: 25%;
+            right: 15%;
+            width: 100px;
+            animation: drift 8s ease-in-out infinite reverse;
+        }
+        .palm-svg {
+            bottom: 0;
+            left: -20px;
+            width: 250px;
+            transform-origin: bottom left;
+            animation: float 4s ease-in-out infinite;
+        }
+        .palm-svg-right {
+            bottom: 0;
+            right: -20px;
+            width: 200px;
+            transform: scaleX(-1); /* Отражаем пальму */
+            transform-origin: bottom right;
+            animation: float 5s ease-in-out infinite 1s;
+        }
+
+        /* --- Шапка --- */
         header {
-            padding: 20px 40px;
+            padding: 25px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--ocean);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--pastel-blue);
             text-decoration: none;
             display: flex;
             align-items: center;
@@ -89,173 +111,247 @@
         }
 
         nav a {
-            margin-left: 25px;
+            margin-left: 30px;
             text-decoration: none;
-            color: var(--text-dark);
+            color: var(--text-soft);
             font-weight: 600;
+            position: relative;
             transition: color 0.3s;
         }
 
-        nav a:hover {
-            color: var(--coral);
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--pastel-pink);
+            border-radius: 2px;
+            transition: width 0.3s;
         }
 
-        /* Основной контент с эффектом матового стекла */
+        nav a:hover { color: var(--pastel-pink); }
+        nav a:hover::after { width: 100%; }
+
+        /* --- Основной контент --- */
         main {
-            flex: 1;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            justify-content: center;
+            padding: 40px 20px 100px; /* Отступ снизу для пальм */
+            text-align: center;
         }
 
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
+        .hero-card {
+            background: var(--white-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 32px;
             padding: 60px 40px;
-            max-width: 800px;
+            max-width: 700px;
             width: 100%;
-            text-align: center;
-            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+            box-shadow: 0 15px 35px rgba(174, 198, 207, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
             font-size: 3rem;
             margin-bottom: 20px;
-            background: linear-gradient(90deg, var(--ocean), var(--coral));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text-soft);
             line-height: 1.2;
+        }
+        
+        h1 span {
+            color: var(--pastel-peach);
+            text-shadow: 1px 1px 0px rgba(0,0,0,0.05);
         }
 
         p.subtitle {
             font-size: 1.2rem;
             line-height: 1.6;
-            margin-bottom: 40px;
-            color: #546E7A;
+            margin-bottom: 35px;
+            color: #7A7A7A;
         }
 
-        /* Летняя кнопка */
-        .btn-summer {
+        .btn-pastel {
             display: inline-block;
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--sun), var(--coral));
+            padding: 16px 45px;
+            background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-lavender));
             color: white;
             font-size: 1.1rem;
-            font-weight: 800;
+            font-weight: 700;
             text-decoration: none;
             border-radius: 50px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(255, 112, 67, 0.3);
+            box-shadow: 0 8px 20px rgba(255, 209, 220, 0.4);
             transition: all 0.3s ease;
         }
 
-        .btn-summer:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 112, 67, 0.4);
-            background: linear-gradient(135deg, var(--coral), var(--sun));
+        .btn-pastel:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 25px rgba(255, 209, 220, 0.6);
+            background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-pink));
         }
 
-        /* Секция с карточками особенностей */
+        /* --- Секция карточек --- */
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
             margin-top: 50px;
-            text-align: left;
+            width: 100%;
+            max-width: 900px;
         }
 
-        .feature-item {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+        .feature-card {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 30px 20px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             display: block;
         }
 
-        .feature-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            color: var(--ocean);
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--pastel-blue);
         }
 
-        .feature-item p {
-            font-size: 0.9rem;
-            color: #78909C;
+        .feature-card p {
+            font-size: 0.95rem;
+            color: #888;
+            line-height: 1.5;
         }
 
-        /* Подвал */
+        /* --- Подвал --- */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             font-size: 0.9rem;
-            color: #78909C;
+            color: #999;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Адаптивность для мобильных */
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-            .glass-card { padding: 40px 20px; }
-            header { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 10px; }
+        /* --- Адаптивность --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero-card { padding: 40px 25px; }
+            header { flex-direction: column; gap: 20px; }
+            nav a { margin: 0 15px; }
+            .palm-svg, .palm-svg-right { width: 150px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Декоративные элементы фона -->
-    <div class="bg-decoration sun-orb"></div>
-    <div class="bg-decoration ocean-orb"></div>
+    <!-- 🎨 Встроенные летние рисунки (SVG) -->
+    <!-- Солнышко -->
+    <svg class="decoration sun-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="25" fill="#FDFD96"/>
+        <g stroke="#FDFD96" stroke-width="5" stroke-linecap="round">
+            <line x1="50" y1="10" x2="50" y2="20"/>
+            <line x1="50" y1="80" x2="50" y2="90"/>
+            <line x1="10" y1="50" x2="20" y2="50"/>
+            <line x1="80" y1="50" x2="90" y2="50"/>
+            <line x1="21" y1="21" x2="28" y2="28"/>
+            <line x1="72" y1="72" x2="79" y2="79"/>
+            <line x1="21" y1="79" x2="28" y2="72"/>
+            <line x1="72" y1="28" x2="79" y2="21"/>
+        </g>
+    </svg>
 
+    <!-- Облака -->
+    <svg class="decoration cloud-1" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 40C10 25 20 15 35 15C40 5 60 5 70 15C85 10 95 20 95 35C95 50 85 55 75 55H20C10 55 0 50 10 40Z" fill="#ffffff" fill-opacity="0.8"/>
+    </svg>
+    <svg class="decoration cloud-2" viewBox="0 0 100 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 40C10 25 20 15 35 15C40 5 60 5 70 15C85 10 95 20 95 35C95 50 85 55 75 55H20C10 55 0 50 10 40Z" fill="#ffffff" fill-opacity="0.6"/>
+    </svg>
+
+    <!-- Пальмы по бокам -->
+    <svg class="decoration palm-svg" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Ствол -->
+        <path d="M100 300 Q120 200 100 100 Q90 50 110 20" stroke="#E8C39E" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <!-- Листья -->
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#B4F8C8" transform="rotate(-30 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#A0E7E5" transform="rotate(10 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#B4F8C8" transform="rotate(50 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#A0E7E5" transform="rotate(90 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#B4F8C8" transform="rotate(130 110 30)"/>
+        <!-- Кокосы -->
+        <circle cx="105" cy="45" r="6" fill="#8D6E63"/>
+        <circle cx="115" cy="48" r="6" fill="#8D6E63"/>
+        <circle cx="110" cy="55" r="6" fill="#8D6E63"/>
+    </svg>
+
+    <svg class="decoration palm-svg-right" viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 300 Q120 200 100 100 Q90 50 110 20" stroke="#E8C39E" stroke-width="12" fill="none" stroke-linecap="round"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#B4F8C8" transform="rotate(-30 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#A0E7E5" transform="rotate(10 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#B4F8C8" transform="rotate(50 110 30)"/>
+        <ellipse cx="110" cy="30" rx="60" ry="15" fill="#A0E7E5" transform="rotate(90 110 30)"/>
+        <circle cx="105" cy="45" r="6" fill="#8D6E63"/>
+        <circle cx="115" cy="48" r="6" fill="#8D6E63"/>
+    </svg>
+
+    <!-- --- Структура сайта --- -->
     <header>
-        <a href="#" class="logo">🌴 SummerDev</a>
+        <a href="#" class="logo">🌺 PastelSummer</a>
         <nav>
             <a href="#about">О нас</a>
-            <a href="#projects">Проекты</a>
+            <a href="#gallery">Галерея</a>
             <a href="#contact">Контакты</a>
         </nav>
     </header>
 
     <main>
-        <div class="glass-card">
-            <h1>Добро пожаловать в лето! ☀️</h1>
+        <div class="hero-card">
+            <h1>Время <span>тёплого</span> лета ☀️</h1>
             <p class="subtitle">
-                Это легкий, воздушный и современный шаблон для вашего сайта на GitHub Pages. 
-                Наслаждайтесь сочетанием морских оттенков, эффекта матового стекла и плавных анимаций.
+                Наслаждайтесь нежными пастельными оттенками, легким бризом и уютной атмосферой. 
+                Этот шаблон идеально подойдет для личного блога, портфолио или лендинга.
             </p>
-            <a href="https://github.com" class="btn-summer">Перейти в GitHub 🚀</a>
+            <a href="#" class="btn-pastel">Начать путешествие 🌴</a>
+        </div>
 
-            <div class="features">
-                <div class="feature-item">
-                    <span class="feature-icon">🎨</span>
-                    <h3>Стильный дизайн</h3>
-                    <p>Градиенты и glassmorphism для современного вида.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">📱</span>
-                    <h3>Адаптивность</h3>
-                    <p>Отлично выглядит на телефонах, планшетах и ПК.</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">⚡</span>
-                    <h3>Легкий код</h3>
-                    <p>Только HTML и CSS, без тяжелых библиотек.</p>
-                </div>
+        <div class="features">
+            <div class="feature-card">
+                <span class="feature-icon">🍦</span>
+                <h3>Свежий дизайн</h3>
+                <p>Мягкие градиенты и скругленные углы создают ощущение легкости и прохлады.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🎨</span>
+                <h3>Пастельные тона</h3>
+                <p>Тщательно подобранная палитра, которая не утомляет глаза и радует взгляд.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">📱</span>
+                <h3>Адаптивность</h3>
+                <p>Сайт прекрасно выглядит как на большом мониторе, так и на экране смартфона.</p>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>© 2026 Summer Theme. Сделано с ❤️ и солнечным настроением.</p>
+        <p>© 2026 Pastel Summer. Сделано с любовью и хорошим настроением 🌸</p>
     </footer>
 
 </body>
